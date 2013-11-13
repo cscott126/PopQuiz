@@ -1,9 +1,20 @@
+var sites = [
+"facebook.com", "reddit.com", "twitter.com", "instagram.com", "cracked.com"
+];
 var current = window.location.href;
-if (current.indexOf("stackoverflow") !== -1) {
+var badSite = false;
+
+for (var i = 0; i < sites.length; i++) {
+  if (window.location.hostname.indexOf(sites[i]) !== -1) {
+    badSite = true;
+  }
+}
+
+if (badSite) {
 jQuery(document).ready(
     function() {
       $.getJSON(
-	"https://api.quizlet.com/2.0/sets/415?client_id=w4FsaqPzF3&whitespace=1", 
+	"https://api.quizlet.com/2.0/sets/" + userSetID + "?client_id=w4FsaqPzF3&whitespace=1", 
 	{},
 	function(data) {
 	  var index = Math.floor(Math.random() * data.terms.length);
@@ -16,6 +27,7 @@ jQuery(document).ready(
 
 	    if (i !== 0) {
 	      message = (tries - i) + " tries remaining for: " + term;
+
 	    } if (ans === window.prompt(message)) {
 	      window.alert("CORRECT");
 	      break;
