@@ -14,7 +14,7 @@ if (badSite) {
 jQuery(document).ready(
     function() {
       $.getJSON(
-	"https://api.quizlet.com/2.0/sets/" + userSetID + "?client_id=w4FsaqPzF3&whitespace=1", 
+	"https://api.quizlet.com/2.0/sets/415?client_id=w4FsaqPzF3&whitespace=1", 
 	{},
 	function(data) {
 	  var index = Math.floor(Math.random() * data.terms.length);
