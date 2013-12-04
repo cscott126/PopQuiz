@@ -1,6 +1,9 @@
 {
     "manifest_version": 2,
     "name": "PopQuiz",
+    "background": {
+        "scripts": ["background.js"]
+    },
     "description": "This extension gives you pop quizzes when you click on distractions.",
     "version": "1.0",
     "browser_action": {
