@@ -29,27 +29,22 @@ chrome.runtime.sendMessage("get_settings", function(response) {
 						var index = Math.floor(Math.random() * data.terms.length);
 						var term = data.terms[index].term;
 						var ans = data.terms[index].definition;
-						var tries = 5;
+						var tries = 3;
+						var message = " tries remaining for: " + term;
 
-						for (i = 0; i < tries; i++) {
-							var message = term;
-
-							if (i !== 0) {
-								message = (tries - i) + " tries remaining for: " + term;
-
-							} if (ans === window.prompt(message)) {
-								window.alert("CORRECT");
-								break;
-							} if (i === tries - 1) {
-								window.alert("STUDY HARDER!!! ANSWER: " + ans);
+						var promptFunction = function(result) {
+							if (tries === 1 && (result === null || ans.toLowerCase() !== result.toLowerCase())) {
+								bootbox.alert("Study harder!!! Answer: " + ans);
+							} else if (result !== null && result.toLowerCase() === ans.toLowerCase()) {                                             
+								bootbox.alert("Correct!");                              
+							} else {
+								tries--;
+								bootbox.prompt(tries + message, promptFunction);
 							}
 						}
+
+						bootbox.prompt(tries + message, promptFunction);
 					});
 			});
 	}
-
-
 });
-
-
-

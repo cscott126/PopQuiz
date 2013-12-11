@@ -8,7 +8,6 @@ chrome.runtime.onMessage.addListener(
     	settingsDict["quizlet_id"] = localStorage["quizlet_id"];
     	settingsDict["blocked_sites"] = localStorage["blocked_sites"];
     	sendResponse(settingsDict);
-    	// sendResponse({farewell: "goodbye"});
     }
       
   });

@@ -1,0 +1,11 @@
+.popquiz-modal-content h4, .popquiz-modal-content input, .bootbox-body{
+	font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+	font-size: 20px;
+	line-height: 1.428571429;
+	color: rgb(51, 51, 51);
+}
+
+input.bootbox-input{
+    width: 90%;
+	margin: 0 auto;
+}

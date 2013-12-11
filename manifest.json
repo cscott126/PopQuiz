@@ -22,8 +22,14 @@
             ],
             "js": [
                 "jquery-2.0.3.min.js",
+                "/customBootstrap/js/bootstrap.prefixed.js",
+                "bootbox.js",
                 "popup.js"
-            ]
+            ],
+            "css": [
+                "/customBootstrap/css/bootstrap.prefixed.css",
+                "popup.css"
+            ] 
         }
     ],
     "options_page": "options.html"
