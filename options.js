@@ -1,6 +1,12 @@
 $(function() {
 	 var currentId = localStorage["quizlet_id"];
-	 var currentUrls = JSON.parse(localStorage["blocked_sites"]);
+     
+     var currentUrls;
+     if (localStorage['blocked_sites']) {
+         currentUrls = JSON.parse(localStorage["blocked_sites"]);
+     } else {
+         currentUrls = [];
+     }
 
 
 		var scntDiv = $('.p_scents');
