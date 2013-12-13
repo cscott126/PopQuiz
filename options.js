@@ -39,7 +39,7 @@ $(function() {
 					}
 			}
 			localStorage["blocked_sites"] = JSON.stringify(blocked_sites);
-			$(".save_message").show;
+			$(".save_message").show();
 	})
 		
 		$(document).on('click', '.addScnt', addInput);
