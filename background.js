@@ -7,6 +7,7 @@ chrome.runtime.onMessage.addListener(
     	var settingsDict = {}
     	settingsDict["quizlet_id"] = localStorage["quizlet_id"];
     	settingsDict["blocked_sites"] = localStorage["blocked_sites"];
+        settingsDict["is_checked"] = localStorage["is_checked"];
     	sendResponse(settingsDict);
     }
       

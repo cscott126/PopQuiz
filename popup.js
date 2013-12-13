@@ -7,11 +7,13 @@ var current = window.location.href;
 var badSite = false;
 var setId = -1;
 var sites = [];
+var switchFlag = "";
 
 chrome.runtime.sendMessage("get_settings", function(response) {
 	console.log(response);
 	setId = response.quizlet_id;
 	sites = JSON.parse(response.blocked_sites);
+	switchFlag = response.is_checked;
 
 	for (var i = 0; i < sites.length; i++) {
 		if (window.location.hostname.indexOf(sites[i]) !== -1) {
@@ -27,8 +29,15 @@ chrome.runtime.sendMessage("get_settings", function(response) {
 					{},
 					function(data) {
 						var index = Math.floor(Math.random() * data.terms.length);
-						var term = data.terms[index].term;
-						var ans = data.terms[index].definition;
+						if (switchFlag == "true") {
+							var term = data.terms[index].definition;
+							var ans = data.terms[index].term;	
+						}
+						else {
+							var term = data.terms[index].term;
+							var ans = data.terms[index].definition;
+						}
+						
 						var tries = 3;
 						var message = " tries remaining for: " + term;
 
@@ -45,6 +54,6 @@ chrome.runtime.sendMessage("get_settings", function(response) {
 
 						bootbox.prompt(tries + message, promptFunction);
 					});
-			});
-	}
+});
+}
 });

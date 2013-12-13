@@ -8,6 +8,8 @@ $(function() {
          currentUrls = [];
      }
 
+     var currentSwitch = localStorage["is_checked"];
+
 
 		var scntDiv = $('.p_scents');
 		var i = $('#p_scents p').size() + 1;
@@ -19,7 +21,7 @@ $(function() {
 		};
 
 		$('#quizlet-set-id').val(currentId);
-
+  $(".switch").prop("checked", currentSwitch == "true");
 		for (var j = 0; j < currentUrls.length; j++) {
 					addInput();
 					$($('.p_scnt')[j]).val(currentUrls[j]);
@@ -39,6 +41,7 @@ $(function() {
 					}
 			}
 			localStorage["blocked_sites"] = JSON.stringify(blocked_sites);
+			localStorage["is_checked"] = $(".switch").is(':checked');
 			$(".save_message").show();
 	})
 		
